@@ -20,8 +20,11 @@ namespace Hushigoeuf
 
         public static readonly Dictionary<string, HG_MM_AICharacterRegion2D> Instances =
             new Dictionary<string, HG_MM_AICharacterRegion2D>();
-
-        [Required] public string RegionID;
+        
+#if ODIN_INSPECTOR
+        [Required]
+#endif
+        public string RegionID;
         public RegionTypes RegionType;
 
         /// Размер прямоугольной области если регион соответствующего типа
