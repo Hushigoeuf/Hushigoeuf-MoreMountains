@@ -4,13 +4,13 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Hushigoeuf
+namespace Hushigoeuf.MoreMountains
 {
     /// <summary>
     /// Определяет область для движения персонажей c включенным AI.
     /// </summary>
-    [AddComponentMenu(HGEditor.PATH_MENU_TP + nameof(HG_MM_AICharacterRegion2D))]
-    public class HG_MM_AICharacterRegion2D : MonoBehaviour
+    [AddComponentMenu(HGEditor.PATH_MENU_COMPONENT + nameof(AICharacterRegion2D))]
+    public class AICharacterRegion2D : MonoBehaviour
     {
         public enum RegionTypes
         {
@@ -18,22 +18,21 @@ namespace Hushigoeuf
             Circle
         }
 
-        public static readonly Dictionary<string, HG_MM_AICharacterRegion2D> Instances =
-            new Dictionary<string, HG_MM_AICharacterRegion2D>();
-        
+        public static readonly Dictionary<string, AICharacterRegion2D> Instances =
+            new Dictionary<string, AICharacterRegion2D>();
+
 #if ODIN_INSPECTOR
         [Required]
 #endif
         public string RegionID;
+
         public RegionTypes RegionType;
 
-        /// Размер прямоугольной области если регион соответствующего типа
 #if ODIN_INSPECTOR
         [EnableIf(nameof(RegionType), RegionTypes.Box)]
 #endif
         public Vector2 Size;
 
-        /// Радиус окружности если регион соответствующего типа
 #if ODIN_INSPECTOR
         [EnableIf(nameof(RegionType), RegionTypes.Circle)]
 #endif
@@ -51,9 +50,6 @@ namespace Hushigoeuf
                 Instances.Remove(RegionID);
         }
 
-        /// <summary>
-        /// Возвращает рандомную позицию в соответствии с параметрами региона.
-        /// </summary>
         public Vector2 GetRandomPosition()
         {
             var result = (Vector2) transform.position;
@@ -73,9 +69,6 @@ namespace Hushigoeuf
             return result;
         }
 
-        /// <summary>
-        /// Возвращает рандомную позицию внутри заданной окружности.
-        /// </summary>
         protected virtual Vector2 GetRandomPositionInsideCircle(Vector2 center, float radius) =>
             center + Random.insideUnitCircle * radius;
 
@@ -104,7 +97,7 @@ namespace Hushigoeuf
             }
         }
 
-        public static HG_MM_AICharacterRegion2D GetRegion(string regionID)
+        public static AICharacterRegion2D GetRegion(string regionID)
         {
             if (Instances.ContainsKey(regionID))
                 return Instances[regionID];

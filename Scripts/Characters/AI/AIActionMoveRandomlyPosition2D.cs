@@ -2,13 +2,13 @@
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 
-namespace Hushigoeuf
+namespace Hushigoeuf.MoreMountains
 {
     /// <summary>
     /// Заставляет персонажа двигаться в соответствии с классом-родителем AIActionMoveRandomly2D,
     /// но в качестве основы берется позиция, а не направление.
     /// </summary>
-    public abstract class HG_MM_AIActionMoveRandomlyPosition2D : AIActionMoveRandomly2D
+    public abstract class AIActionMoveRandomlyPosition2D : AIActionMoveRandomly2D
     {
         protected Vector2 _pickedPosition;
 

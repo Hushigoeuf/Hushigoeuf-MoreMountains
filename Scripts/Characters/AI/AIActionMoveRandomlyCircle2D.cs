@@ -1,16 +1,16 @@
 ﻿#if MOREMOUNTAINS_TOPDOWNENGINE
 using UnityEngine;
 
-namespace Hushigoeuf
+namespace Hushigoeuf.MoreMountains
 {
     /// <summary>
     /// Заставляет персонажа двигаться в соответствии с классом-родителем AIActionMoveRandomly2D,
     /// но в пределах заданной сферической области.
     /// </summary>
-    [AddComponentMenu(HGEditor.PATH_MENU_TP + nameof(HG_MM_AIActionMoveRandomlyCircle2D))]
-    public class HG_MM_AIActionMoveRandomlyCircle2D : HG_MM_AIActionMoveRandomlyPosition2D
+    [AddComponentMenu(HGEditor.PATH_MENU_COMPONENT + nameof(AIActionMoveRandomlyCircle2D))]
+    public class AIActionMoveRandomlyCircle2D : AIActionMoveRandomlyPosition2D
     {
-        [Header(nameof(HG_MM_AIActionMoveRandomlyCircle2D))]
+        [Header(nameof(AIActionMoveRandomlyCircle2D))]
         public float MinimumRandomRadius;
 
         public float MaximumRandomRadius;
@@ -40,7 +40,7 @@ namespace Hushigoeuf
             base.OnDrawGizmosSelected();
 
             var center = transform.position;
-            var radius = MaximumRandomRadius;
+            float radius = MaximumRandomRadius;
             if (Application.isPlaying)
             {
                 center = _center;
